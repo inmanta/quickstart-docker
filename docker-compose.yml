@@ -1,6 +1,12 @@
 version: '3'
 services:
-    inmanta:
+    postgres:
+        image: postgres:10
+        environment:
+            POSTGRES_USER: inmanta
+            POSTGRES_PASSWORD: inmanta
+
+    inmanta-server:
         build:
             context: "./server"
         ports:
@@ -13,11 +19,23 @@ services:
         depends_on:
             - "postgres"
 
-    postgres:
-        image: postgres:10
-        environment:
-            POSTGRES_USER: inmanta
-            POSTGRES_PASSWORD: inmanta
+    agent-1:
+        build:
+            context: "./agent"
+        volumes:
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        privileged: true
+        links:
+            - inmanta-server
+
+    agent-2:
+        build:
+            context: "./agent"
+        volumes:
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        privileged: true
+        links:
+            - inmanta-server
 
 volumes:
     inmanta-data:

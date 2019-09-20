@@ -8,7 +8,8 @@ RUN yum install -y python3-inmanta python3-inmanta-server python3-inmanta-agent 
 RUN mkdir /home/inmanta
 
 RUN rm /etc/inmanta/inmanta.cfg
-COPY server.cfg /etc/inmanta/server.cfg
+COPY server.cfg /etc/inmanta/inmanta.cfg
+COPY id_rsa /root/.ssh/id_rsa
 
 EXPOSE 8888
-CMD /usr/bin/inmanta -c /etc/inmanta/server.cfg -vvv server
+CMD until PGPASSWORD="inmanta" psql -h "postgres" -U "inmanta" -c '\q'; do sleep 1; done && /usr/bin/inmanta -vvv server
