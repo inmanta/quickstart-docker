@@ -5,19 +5,23 @@ services:
         environment:
             POSTGRES_USER: inmanta
             POSTGRES_PASSWORD: inmanta
+        networks:
+            testing_net:
+                ipv4_address: 172.28.0.2
 
     inmanta-server:
         build:
             context: "./server"
         ports:
             - "8888:8888"
-        links:
-            - postgres
         volumes:
             - inmanta-data:/var/lib/inmanta
             - ./test-project:/home/inmanta/test-project
         depends_on:
             - "postgres"
+        networks:
+            testing_net:
+                ipv4_address: 172.28.0.3
 
     agent-1:
         build:
@@ -25,8 +29,9 @@ services:
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
         privileged: true
-        links:
-            - inmanta-server
+        networks:
+            testing_net:
+                ipv4_address: 172.28.0.4
 
     agent-2:
         build:
@@ -34,8 +39,16 @@ services:
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
         privileged: true
-        links:
-            - inmanta-server
+        networks:
+            testing_net:
+                ipv4_address: 172.28.0.5
 
 volumes:
     inmanta-data:
+
+networks:
+    testing_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.28.0.0/16
