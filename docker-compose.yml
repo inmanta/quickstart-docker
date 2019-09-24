@@ -10,6 +10,7 @@ services:
                 ipv4_address: 172.28.0.2
 
     inmanta-server:
+        image: inmanta-server
         build:
             context: "./server"
         ports:
@@ -24,6 +25,7 @@ services:
                 ipv4_address: 172.28.0.3
 
     agent-1:
+        image: inmanta-agent
         build:
             context: "./agent"
         volumes:
@@ -34,8 +36,7 @@ services:
                 ipv4_address: 172.28.0.4
 
     agent-2:
-        build:
-            context: "./agent"
+        image: inmanta-agent
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
         privileged: true
