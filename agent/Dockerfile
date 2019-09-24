@@ -23,5 +23,14 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 COPY id_rsa.pub /root/.ssh/authorized_keys
 RUN chown root:root /root/.ssh/authorized_keys
 
+COPY inmanta_oss_stable.repo /etc/yum.repos.d/inmanta_oss_stable.repo
+
+RUN yum install -y epel-release
+RUN yum install -y python3-inmanta python3-inmanta-agent postgresql
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+
 EXPOSE 22
 CMD ["/usr/sbin/init"]
