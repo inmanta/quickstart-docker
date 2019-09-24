@@ -15,6 +15,7 @@ RUN mkdir /home/inmanta
 RUN rm /etc/inmanta/inmanta.cfg
 COPY server.cfg /etc/inmanta/inmanta.cfg
 COPY id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
 
 EXPOSE 8888
 CMD until PGPASSWORD="inmanta" psql -h "postgres" -U "inmanta" -c '\q'; do sleep 1; done && /usr/bin/inmanta -vvv server
