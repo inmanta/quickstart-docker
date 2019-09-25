@@ -17,6 +17,7 @@ services:
             - "8888:8888"
         volumes:
             - inmanta-data:/var/lib/inmanta
+            - ssh-data:/home/inmanta/.shared
             - ./test-project:/home/inmanta/test-project
         depends_on:
             - "postgres"
@@ -30,7 +31,10 @@ services:
             context: "./agent"
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
+            - ssh-data:/root/.ssh
         privileged: true
+        depends_on:
+            - "inmanta-server"
         networks:
             testing_net:
                 ipv4_address: 172.28.0.4
@@ -39,13 +43,17 @@ services:
         image: inmanta-agent
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
+            - ssh-data:/root/.ssh
         privileged: true
+        depends_on:
+            - "inmanta-server"
         networks:
             testing_net:
                 ipv4_address: 172.28.0.5
 
 volumes:
     inmanta-data:
+    ssh-data:
 
 networks:
     testing_net:
