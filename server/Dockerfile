@@ -14,7 +14,7 @@ RUN mkdir /home/inmanta
 RUN mkdir /home/inmanta/.shared
 RUN ssh-keygen -b 4096 -t rsa -f ~/.ssh/id_rsa -q -N ""
 RUN /bin/cp -rf ~/.ssh/id_rsa.pub /home/inmanta/.shared/authorized_keys
-RUN chown root:root /home/inmanta/.shared/authorized_keys
+RUN chmod 600 /home/inmanta/.shared/authorized_keys
 
 RUN rm /etc/inmanta/inmanta.cfg
 COPY server.cfg /etc/inmanta/inmanta.cfg
