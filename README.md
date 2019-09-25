@@ -21,7 +21,7 @@ similarly, tearing it down is also quite simple:
 
 `docker-compose down`
 
-Once the lab is up, you should be able to access (127.0.0.1:8888) and see the inmanta dashboard.  
+Once the lab is up, you should be able to access (`127.0.0.1:8888`) and see the inmanta dashboard.  
 You can use the dashboard to create a new project and environment.  
 The steps below detail how to do it using the commandline.  
 
@@ -40,3 +40,7 @@ inmanta-cli environment create -n quickstart-env -p test --save
 4. Compile and immediatly deploy the test project:
 
 `inmanta -vvv  export -d`
+
+The progress can be checked using the dashboard.
+
+5. If everything deployed correctly, the drupal based website should be reachable on `127.0.0.1:8080`

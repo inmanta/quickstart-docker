@@ -41,6 +41,8 @@ services:
         networks:
             testing_net:
                 ipv4_address: 172.28.0.4
+        ports:
+            - "80:8080"
 
     agent-2:
         container_name: inmanta_quickstart_agent_2
