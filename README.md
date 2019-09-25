@@ -37,6 +37,6 @@ inmanta-cli project create -n test
 inmanta-cli environment create -n quickstart-env -p test --save
 ```
 
-4. Compile the test project:
+4. Compile and immediatly deploy the test project:
 
 `inmanta -vvv  export -d`
