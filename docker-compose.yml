@@ -1,6 +1,7 @@
 version: '3'
 services:
     postgres:
+        container_name: inmanta_quickstart_postgres
         image: postgres:10
         environment:
             POSTGRES_USER: inmanta
@@ -10,6 +11,7 @@ services:
                 ipv4_address: 172.28.0.2
 
     inmanta-server:
+        container_name: inmanta_quickstart_server
         image: inmanta-server
         build:
             context: "./server"
@@ -26,6 +28,7 @@ services:
                 ipv4_address: 172.28.0.3
 
     agent-1:
+        container_name: inmanta_quickstart_agent_1
         image: inmanta-agent
         build:
             context: "./agent"
@@ -40,6 +43,7 @@ services:
                 ipv4_address: 172.28.0.4
 
     agent-2:
+        container_name: inmanta_quickstart_agent_2
         image: inmanta-agent
         volumes:
             - /sys/fs/cgroup:/sys/fs/cgroup:ro

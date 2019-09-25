@@ -27,7 +27,7 @@ The steps below detail how to do it using the commandline.
 
 1. Attach a shell to the inmanta-server container:  
 
-`docker exec -it "quickstart-docker_inmanta-server_1" bash`
+`docker exec -it "inmanta_quickstart_server" bash`
 
 2. Navigate to `/home/inmanta/test-project/`. (This directory is shared with the host in this repo under ./test-project)
 3. Create the new project and environment:
