@@ -1,8 +1,0 @@
-[inmanta-oss-stable]
-name=Inmanta OSS stable
-baseurl=https://pkg.inmanta.com/inmanta-oss-stable/el7/
-gpgcheck=1
-gpgkey=https://pkg.inmanta.com/inmanta-oss-stable/inmanta-oss-stable-public-key
-repo_gpgcheck=1
-enabled=1
-enabled_metadata=1
