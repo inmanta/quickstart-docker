@@ -19,7 +19,7 @@ services:
             - "8888:8888"
         volumes:
             - ssh-data:/home/inmanta/.shared
-            - ./test-project:/home/inmanta/test-project:Z
+            - ./quickstart-project:/home/inmanta/quickstart-project:Z
         depends_on:
             - "postgres"
         networks:

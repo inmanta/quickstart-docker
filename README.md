@@ -29,18 +29,20 @@ The steps below detail how to do it using the commandline.
 
 `docker exec -it "inmanta_quickstart_server" bash`
 
-2. Navigate to `/home/inmanta/test-project/`. (This directory is shared with the host in this repo under ./test-project)
-3. Create the new project and environment:
+2. Navigate to `/home/inmanta/quickstart-project/`. (This directory is shared with the host in this repo under ./test-project)
+3. Clone the quickstart repo and use the docker branch:
+
+`git clone https://github.com/inmanta/quickstart.git --branch docker .`
+
+4. Create the new project and environment:
 
 ```
 inmanta-cli project create -n test
 inmanta-cli environment create -n quickstart-env -p test -r https://github.com/inmanta/quickstart.git -b docker --save
 ```
 
-4. Compile and immediatly deploy the test project:
+5. Compile and immediatly deploy the quickstart project:
 
 `inmanta -vvv  export -d`
 
-The progress can be checked using the dashboard.
-
-5. If everything deployed correctly, the drupal based website should be reachable on `127.0.0.1:8080`
+6. If everything deployed correctly, the drupal based website should be reachable on `127.0.0.1:8080`
