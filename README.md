@@ -34,7 +34,7 @@ The steps below detail how to do it using the commandline.
 
 ```
 inmanta-cli project create -n test
-inmanta-cli environment create -n quickstart-env -p test --save
+inmanta-cli environment create -n quickstart-env -p test -r https://github.com/inmanta/quickstart.git -b docker --save
 ```
 
 4. Compile and immediatly deploy the test project:
