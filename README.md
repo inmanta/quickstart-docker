@@ -4,7 +4,7 @@ This project is part of the [Quickstart guide for the Inmanta automation and orc
 
 NOTE:
 This quickstart is only meant to try out inmanta.
-The 2 agent containers emulate centos hosts but are not the real things and thus have several limitations.  
+The 2 agent containers emulate centos hosts but are not the real thing and thus have several limitations.  
 It is strongly discouraged to run the inmanta-agents in this manner.  
 
 ## Requirements
@@ -25,7 +25,7 @@ Once the lab is up, you should be able to access (`127.0.0.1:8888`) and see the 
 You can use the dashboard to create a new project and environment.  
 The steps below detail how to do it using the commandline.  
 
-1. Attach a shell to the inmanta-server container:  
+1. Attach a shell to the inmanta-server container:
 
 `docker exec -it "inmanta_quickstart_server" bash`
 
