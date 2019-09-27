@@ -10,6 +10,11 @@ It is strongly discouraged to run the inmanta-agents in this manner.
 ## Requirements
 
 All you need is docker and docker-compose.  
+Optionally you can use the inmanta quickstart project and clone it in to the quickstart-project directory:  
+
+`git clone https://github.com/inmanta/quickstart.git --branch docker quickstart-project`
+
+The quickstart-project directory will be mounted in to the server container under `/home/inmanta/quickstart-project/`
 
 ## Starting and stopping the lab
 
@@ -30,19 +35,15 @@ The steps below detail how to do it using the commandline.
 `docker exec -it "inmanta_quickstart_server" bash`
 
 2. Navigate to `/home/inmanta/quickstart-project/`. (This directory is shared with the host in this repo under ./quickstart-project)
-3. Clone the quickstart repo and use the docker branch:
-
-`git clone https://github.com/inmanta/quickstart.git --branch docker .`
-
-4. Create the new project and environment:
+3. Create the new project and environment:
 
 ```
 inmanta-cli project create -n test
 inmanta-cli environment create -n quickstart-env -p test -r https://github.com/inmanta/quickstart.git -b docker --save
 ```
 
-5. Compile and immediatly deploy the quickstart project:
+4. Compile and immediatly deploy the quickstart project:
 
 `inmanta -vvv  export -d`
 
-6. When deployment is complete, the drupal website is now reachable on `127.0.0.1:8080`
+5. When deployment is complete, the drupal website is now reachable on `127.0.0.1:8080`
