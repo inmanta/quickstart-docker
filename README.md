@@ -24,7 +24,11 @@ Building the whole environment is as easy as:
 
 similarly, tearing it down is also quite simple:  
 
-`docker-compose down`
+``` sh
+docker-compose down
+docker volume prune
+
+```
 
 Once the lab is up, you should be able to access (`127.0.0.1:8888`) and see the inmanta dashboard.  
 You can use the dashboard to create a new project and environment.  
