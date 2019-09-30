@@ -16,6 +16,12 @@ Optionally you can use the inmanta quickstart project and clone it in to the qui
 
 The quickstart-project directory will be mounted in to the server container under `/home/inmanta/quickstart-project/`
 
+If you are on `Windows` you have to make sure you also do the following:
+
+- In Powershell: `$env:COMPOSE_CONVERT_WINDOWS_PATHS = 1`
+- Restart Docker for Windows
+- Go to Docker for Windows settings > Shared Drives > Reset credentials > select drive with quickstart project > set your credentials > Apply
+
 ## Starting and stopping the lab
 
 Building the whole environment is as easy as:  
@@ -26,8 +32,7 @@ similarly, tearing it down is also quite simple:
 
 ``` sh
 docker-compose down
-docker volume prune
-
+docker volume prune -f
 ```
 
 Once the lab is up, you should be able to access (`127.0.0.1:8888`) and see the inmanta dashboard.  
