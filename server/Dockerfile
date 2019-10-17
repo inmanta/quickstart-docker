@@ -1,7 +1,7 @@
 FROM centos:7
 ENV container docker
 
-COPY inmanta_oss_stable.repo /etc/yum.repos.d/inmanta_oss_stable.repo
+COPY inmanta_oss_dev.repo /etc/yum.repos.d/inmanta_oss_dev.repo
 
 RUN yum install -y python3-inmanta python3-inmanta-server python3-inmanta-agent postgresql
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
