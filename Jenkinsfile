@@ -83,10 +83,10 @@ pipeline {
             archiveArtifacts artifacts: '*.log'
         }
     	success{
-            setGitHubPullRequestStatus: state="SUCCESS"
+            setGitHubPullRequestStatus: state=SUCCESS
         }
     	unsuccessful{
-            setGitHubPullRequestStatus: state="FAILURE"
+            setGitHubPullRequestStatus: state=FAILURE
         }
     }
 }
