@@ -34,7 +34,7 @@ pipeline {
                    sudo docker-compose up -d --build --force-recreate
                    
                    # wait for inmanta dashboard to be up
-                   until $(curl --output /dev/null --silent --head --fail http://localhost:8888/dashboard/#\!/projects); do printf '.'; sleep 1; done
+                   until $(curl --output /dev/null --silent --head --fail http://localhost:8888/dashboard/#\\!/projects); do printf '.'; sleep 1; done
                    
                    # create a project and environment, then export
                    sudo docker exec -i "inmanta_quickstart_server" sh -c "cd /home/inmanta/quickstart-project/; inmanta-cli project create -n test; inmanta-cli environment create -n quickstart-env -p test -r https://github.com/inmanta/quickstart.git -b docker --save"
