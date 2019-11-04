@@ -83,10 +83,14 @@ pipeline {
             archiveArtifacts artifacts: '*.log'
         }
     	success{
-            setGitHubPullRequestStatus state: "SUCCESS"
+            if (env.CHANGE_ID) {
+                setGitHubPullRequestStatus state: "SUCCESS"
+            }
         }
     	unsuccessful{
-            setGitHubPullRequestStatus state: "FAILURE"
+            if (env.CHANGE_ID) {
+                setGitHubPullRequestStatus state: "FAILURE"
+            }
         }
     }
 }
