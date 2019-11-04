@@ -28,7 +28,7 @@ pipeline {
             steps{
                 sh '''
                    # clone the quickstart project in to the mount directory
-                   git clone https://github.com/inmanta/quickstart.git --branch docker quickstart-project
+                   git clone https://github.com/inmanta/quickstart.git quickstart-project
                    
                    # bring up the docker containers
                    sudo docker-compose up -d --build --force-recreate
