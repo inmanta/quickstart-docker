@@ -12,6 +12,14 @@ pipeline {
     }
 
     stages {
+        stage("Set status PR"){
+            when { 
+                changeRequest()
+            }
+            steps {
+                gitHubPRStatus: content = "${GITHUB_PR_COND_REF} run started ${BUILD_URL}"
+            }
+        }
         stage("Cleanup"){
             steps {
                 sh '''
@@ -73,6 +81,7 @@ pipeline {
                sudo docker volume prune -f
 	    '''
             archiveArtifacts artifacts: '*.log'
+            setGitHubPullRequestStatus
         }
     }
 }
