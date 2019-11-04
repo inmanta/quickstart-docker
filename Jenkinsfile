@@ -17,7 +17,7 @@ pipeline {
                 changeRequest()
             }
             steps {
-                gitHubPRStatus: content = "${GITHUB_PR_COND_REF} run started ${BUILD_URL}"
+                gitHubPRStatus content: "${GITHUB_PR_COND_REF} run started ${BUILD_URL}"
             }
         }
         stage("Cleanup"){
@@ -83,10 +83,10 @@ pipeline {
             archiveArtifacts artifacts: '*.log'
         }
     	success{
-            setGitHubPullRequestStatus: state=SUCCESS
+            setGitHubPullRequestStatus state: "SUCCESS"
         }
     	unsuccessful{
-            setGitHubPullRequestStatus: state=FAILURE
+            setGitHubPullRequestStatus state: "FAILURE"
         }
     }
 }
