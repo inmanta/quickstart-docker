@@ -8,7 +8,7 @@ pipeline {
 
     triggers{
         pollSCM('* * * * *')
-        cron(env.BRANCH_NAME == 'master' ? 'H H(2-5) * * 1-5' : '')
+        cron(env.BRANCH_NAME == 'issue/add-jenkinsfile' ? 'H H(2-5) * * 1-5' : '')
     }
 
     stages {
