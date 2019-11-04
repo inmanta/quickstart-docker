@@ -72,7 +72,6 @@ pipeline {
                sudo docker system prune -fa
                sudo docker volume prune -f
 	    '''
-            junit 'lsm/junit.xml'
             archiveArtifacts artifacts: '*.log'
         }
     }
