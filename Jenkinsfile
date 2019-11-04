@@ -81,7 +81,12 @@ pipeline {
                sudo docker volume prune -f
 	    '''
             archiveArtifacts artifacts: '*.log'
-            setGitHubPullRequestStatus
+        }
+    	success{
+            setGitHubPullRequestStatus: state="SUCCESS"
+        }
+    	unsuccessful{
+            setGitHubPullRequestStatus: state="FAILURE"
         }
     }
 }
