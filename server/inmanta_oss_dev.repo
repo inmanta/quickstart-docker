@@ -1,0 +1,8 @@
+[inmanta-oss-dev]
+name=Inmanta OSS dev
+baseurl=https://pkg.inmanta.com/inmanta-oss-dev/el7/
+gpgcheck=1
+gpgkey=https://pkg.inmanta.com/inmanta-oss-dev/inmanta-oss-dev-public-key
+repo_gpgcheck=1
+enabled=1
+enabled_metadata=1
