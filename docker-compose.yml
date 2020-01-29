@@ -21,12 +21,24 @@ services:
             - "8888:8888"
         volumes:
             - ssh-data:/home/inmanta/.shared
-            - ./quickstart-project:/home/inmanta/quickstart-project:Z
         depends_on:
             - "postgres"
         networks:
             testing_net:
                 ipv4_address: 172.28.0.3
+
+    inmanta-proxy:
+        container_name: inmanta_quickstart_proxy
+        image: inmanta_proxy
+        build:
+            context: "./httpd"
+        ports:
+            - "80:80"
+            - "443:443"
+        privileged: true
+        networks:
+            testing_net:
+                ipv4_address: 172.28.0.6
 
     agent-1:
         container_name: inmanta_quickstart_agent_1
