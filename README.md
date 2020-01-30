@@ -70,7 +70,7 @@ It is based on the quickstart project but differs in 2 ways:
 - The inmanta server does not share the quickstart-project directory
 - An extra container with the apache proxy is added
 
-### Setting up the WAP
+### Setting up the WAF
 
 First clone the quickstart-project:  
 
