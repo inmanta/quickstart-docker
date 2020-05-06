@@ -31,12 +31,11 @@ pipeline {
         stage("Run tests"){
             steps{
                 sh '''
-                   export RELEASE=${release}
                    # clone the quickstart project in to the mount directory
                    git clone https://github.com/inmanta/quickstart.git quickstart-project
                    
                    # bring up the docker containers
-                   sudo docker-compose up -d --build --force-recreate
+                   sudo sh -c "export RELEASE=${release}; docker-compose up -d --build --force-recreate"
                    
                    # wait for inmanta dashboard to be up
                    until $(curl --output /dev/null --silent --head --fail http://localhost:8888/dashboard/#\\!/projects); do printf '.'; sleep 1; done
