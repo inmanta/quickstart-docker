@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(name: 'RELEASE', choices: ['stable', 'next', 'dev'], description: 'Run the docker quickstart against the dev, next or stable release.')
+  }
+
     options{
         disableConcurrentBuilds()
         timeout(time: 1, unit: 'HOURS')
