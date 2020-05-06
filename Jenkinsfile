@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'RELEASE', choices: ['stable', 'next', 'dev'], description: 'Run the docker quickstart against the dev, next or stable release.')
+        choice(name: 'release', choices: ['stable', 'next', 'dev'], description: 'Run the docker quickstart against the dev, next or stable release.')
   }
 
     options{
@@ -31,6 +31,7 @@ pipeline {
         stage("Run tests"){
             steps{
                 sh '''
+                   export RELEASE=${release}
                    # clone the quickstart project in to the mount directory
                    git clone https://github.com/inmanta/quickstart.git quickstart-project
                    
