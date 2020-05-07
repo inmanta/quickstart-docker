@@ -16,7 +16,7 @@ services:
         build:
             context: "./server"
             args: 
-                inmanta_repo: inmanta_oss_stable.repo
+                inmanta_repo: inmanta_oss_${RELEASE:-stable}.repo
         ports:
             - "8888:8888"
         volumes:

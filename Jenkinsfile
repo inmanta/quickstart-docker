@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(name: 'release', choices: ['stable', 'next', 'dev'], description: 'Run the docker quickstart against the dev, next or stable release.')
+  }
+
     options{
         disableConcurrentBuilds()
         timeout(time: 1, unit: 'HOURS')
@@ -31,7 +35,7 @@ pipeline {
                    git clone https://github.com/inmanta/quickstart.git quickstart-project
                    
                    # bring up the docker containers
-                   sudo docker-compose up -d --build --force-recreate
+                   sudo sh -c "export RELEASE=${release}; docker-compose up -d --build --force-recreate"
                    
                    # wait for inmanta dashboard to be up
                    until $(curl --output /dev/null --silent --head --fail http://localhost:8888/dashboard/#\\!/projects); do printf '.'; sleep 1; done
