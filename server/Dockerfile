@@ -4,6 +4,7 @@ ENV container docker
 ARG inmanta_repo="inmanta_oss_stable.repo"
 COPY ${inmanta_repo} /etc/yum.repos.d/${INMANTA_REPO}
 
+RUN yum install -y epel-release
 RUN yum install -y python3-inmanta python3-inmanta-server postgresql
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
