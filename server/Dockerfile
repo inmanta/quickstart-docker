@@ -1,11 +1,17 @@
-FROM centos:7
+ARG EL_VERSION
+FROM centos:${EL_VERSION}
+
+ARG RELEASE
 ENV container docker
 
-ARG inmanta_repo="inmanta_oss_stable.repo"
-COPY ${inmanta_repo} /etc/yum.repos.d/${INMANTA_REPO}
-
+COPY ./yum_repo_files/inmanta-oss-${RELEASE}.repo /etc/yum.repos.d/inmanta-oss-${RELEASE}.repo
 RUN yum install -y epel-release
-RUN yum install -y python3-inmanta python3-inmanta-server postgresql
+RUN if [ ${RELEASE} = "stable" ]; then \
+        # Legacy packages
+        yum install -y python3-inmanta python3-inmanta-server postgresql; \
+    else \
+        yum install -y inmanta-oss inmanta-oss-server postgresql; \
+    fi
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
