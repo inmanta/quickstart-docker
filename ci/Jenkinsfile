@@ -10,15 +10,16 @@ pipeline {
         )
     }
 
-    options{
-        disableConcurrentBuilds()
-        timeout(time: 1, unit: 'HOURS')
-    }
-
     stages {
         stage('BuildAndTest') {
             matrix {
                 agent any
+
+                options{
+                    disableConcurrentBuilds()
+                    timeout(time: 1, unit: 'HOURS')
+                }
+
                 when {
                     anyOf {
                         expression { params.RELEASE_FILTER == 'all' }
