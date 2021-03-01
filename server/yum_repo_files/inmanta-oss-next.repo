@@ -1,0 +1,13 @@
+[inmanta-oss-next]
+name=inmanta-oss-next
+baseurl=https://packages.inmanta.com/public/oss-next/rpm/el/$releasever/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://packages.inmanta.com/public/oss-next/gpg.2166B1549D845EBB.key
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md
