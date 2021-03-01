@@ -5,7 +5,7 @@ pipeline {
         choice(
             name: 'RELEASE_FILTER',
             choices: ['all', 'dev', 'next', 'stable'],
-            description: 'Set to dev, next or stable when the matrix should only the tests for dev, next or stable releases.
+            description: 'Set to dev, next or stable when the matrix should only the tests for dev, next or stable releases. \
                           By default, this job will run against all releases.'
         )
     }
