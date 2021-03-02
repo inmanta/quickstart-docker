@@ -1,5 +1,4 @@
-ARG EL_VERSION
-FROM centos:${EL_VERSION}
+FROM centos:7
 
 ARG RELEASE
 ENV container docker
