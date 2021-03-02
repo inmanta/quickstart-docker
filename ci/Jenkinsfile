@@ -69,9 +69,7 @@ pipeline {
                                 git clone https://github.com/inmanta/quickstart.git quickstart-project
 
                                 # bring up the docker containers
-                                sudo sh -c "export RELEASE=${RELEASE}; \
-                                            export EL_VERSION=${EL_VERSION}; \
-                                            docker-compose up -d --build --force-recreate"
+                                sudo sh -c "docker-compose up -d --build --force-recreate"
 
                                 ci/do_test_deployment_and_verify.sh
                             '''
