@@ -57,7 +57,21 @@ inmanta-cli environment create -n quickstart-env -p test -r https://github.com/i
 
 5. When deployment is complete, the drupal website is now reachable on `127.0.0.1:8080`  
 
-## Using a dev version of inmanta
+## Configuration options
 
-In the docker compose file you can find th build argument `inmanta_repo: inmanta_oss_stable.repo`.  
-Changing this to `inmanta_repo: inmanta_oss_dev.repo` will make the quickstart use a dev release of inmanta instead.  
+By default, quickstart-docker runs on the latest stable release of inmanta OSS product using a Centos 7 container. This 
+behavior can be 
+adjusted by setting environment variables. The following environment variables can be set:
+
+| Environment variable   | Allowed values      | Default value  | Description                                               |
+| :--------------------: |:-------------------:| :-------------:| --------------------------------------------------------- |
+| EL_VERSION             | [7, 8]              | 7              | Run the inmanta orchestrator on this Centos version       | 
+| RELEASE                | [dev, next, stable] | stable         | Install the inmanta orchestrator from this release stream |
+
+**Example:** Run quickstart-docker on a Centos 8 container using the latest development release of inmanta OSS product.
+
+```bash
+$ export EL_VERSION=8
+$ export RELEASE=dev
+$ docker-compose up
+```
