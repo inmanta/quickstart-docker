@@ -4,10 +4,15 @@ pipeline {
     parameters {
         choice(
             name: 'RELEASE_FILTER',
-            choices: ['all', 'dev', 'next', 'stable'],
+            choices: ['dev_and_stable', 'dev', 'next', 'stable'],
             description: 'Set to dev, next or stable when the matrix should only the tests for dev, next or stable releases. \
-                          By default, this job will run against all releases.'
+                          By default, this job will run against dev and stable releases.'
         )
+    }
+
+    triggers {
+        upstream(get_upstream_project())
+        cron(BRANCH_NAME == "master" ? "H H(2-5) * * *": "")
     }
 
     options{
@@ -25,7 +30,13 @@ pipeline {
 
                 when {
                     anyOf {
-                        expression { params.RELEASE_FILTER == 'all' }
+                        allOf {
+                            expression { params.RELEASE_FILTER == 'dev_and_stable' }
+                            anyOf {
+                                expression { "dev" == env.RELEASE }
+                                expression { "stable" == env.RELEASE }
+                            }
+                        }
                         expression { params.RELEASE_FILTER == env.RELEASE }
                     }
                 }
