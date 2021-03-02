@@ -15,8 +15,9 @@ services:
         image: inmanta-server
         build:
             context: "./server"
+            dockerfile: Dockerfile-el${EL_VERSION:-7}
             args: 
-                inmanta_repo: inmanta_oss_${RELEASE:-stable}.repo
+                RELEASE: ${RELEASE:-stable}
         ports:
             - "8888:8888"
         volumes:

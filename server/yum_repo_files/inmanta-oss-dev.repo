@@ -1,0 +1,13 @@
+[inmanta-oss-dev]
+name=inmanta-oss-dev
+baseurl=https://packages.inmanta.com/public/oss-dev/rpm/el/$releasever/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgkey=https://packages.inmanta.com/public/oss-dev/gpg.DCDF0896322A8B93.key
+gpgcheck=1
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+pkg_gpgcheck=1
+autorefresh=1
+type=rpm-md

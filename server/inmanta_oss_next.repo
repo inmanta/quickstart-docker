@@ -1,8 +1,0 @@
-[inmanta-oss-next]
-name=Inmanta OSS next
-baseurl=https://pkg.inmanta.com/inmanta-oss-next/el7/
-gpgcheck=1
-gpgkey=https://pkg.inmanta.com/inmanta-oss-next/inmanta-oss-next-public-key
-repo_gpgcheck=1
-enabled=1
-enabled_metadata=1
