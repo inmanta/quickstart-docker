@@ -11,7 +11,6 @@ pipeline {
     }
 
     triggers {
-        upstream(get_upstream_project())
         cron(BRANCH_NAME == "master" ? "H H(2-5) * * *": "")
     }
 
